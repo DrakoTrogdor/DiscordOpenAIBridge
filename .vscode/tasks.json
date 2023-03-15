@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/DiscordOpenAIBridge.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-release",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/DiscordOpenAIBridge.csproj",
+                "--configuration",
+                "Release",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/DiscordOpenAIBridge.csproj",
+                "--configuration",
+                "Release",
+                "-p:PublishSingleFile=true",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/DiscordOpenAIBridge.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean-publish",
+            "type": "shell",
+            "command": "if (Test-Path '${workspaceFolder}/bin/Release/net7.0/publish') { Remove-Item -Recurse -Force '${workspaceFolder}/bin/Release/net7.0/publish' }; if (Test-Path '${workspaceFolder}/bin/Release/net7.0/win-x64') { Remove-Item -Recurse -Force '${workspaceFolder}/bin/Release/net7.0/win-x64' }",
+            "options": {
+              "shell": {
+                "executable": "pwsh",
+                "args": ["-Command"]
+              }
+            },
+            "group": {
+              "kind": "build",
+              "isDefault": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "clean-debug",
+            "command": "dotnet",
+            "type": "shell",
+            "args": ["clean", "--configuration", "Debug"],
+            "presentation": {
+              "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean-release",
+            "command": "dotnet",
+            "type": "shell",
+            "args": ["clean", "--configuration", "Release"],
+            "presentation": {
+              "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "clean-all",
+            "dependsOn": ["clean-debug", "clean-release", "clean-publish"],
+            "group": "build"
+        }
+    ]
+}

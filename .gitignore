@@ -1,0 +1,43 @@
+# Visual Studio Code
+.vscode/*
+!/.vscode/tasks.json
+
+# Visual Studio files
+*.sln
+*.suo
+*.cache
+*.csproj.user
+*.userprefs
+bin/
+obj/
+
+# .NET Core
+**/bin/
+**/obj/
+
+# NuGet Packages
+*.nupkg
+*.pdb
+packages/
+*.log
+*.zip
+*.dll
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
